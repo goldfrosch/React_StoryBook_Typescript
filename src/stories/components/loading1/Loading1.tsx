@@ -1,12 +1,21 @@
 import styled, { css } from "styled-components";
 
-interface LoadingProps {}
+interface LoadingProps {
+  maxNum?: number;
+  gradiant?: "low" | "high";
+  margin?: "low" | "middle" | "high";
+}
 
-function Loading1({}: LoadingProps) {
+function Loading1({ maxNum, gradiant, margin }: LoadingProps) {
   return (
     <LoadingBlock>
-      {[...Array(7)].map((_, key) => (
-        <LoadingItemBlock type={key} gradiant="low" margin="low" key={key} />
+      {[...Array(maxNum || 7)].map((_, key) => (
+        <LoadingItemBlock
+          type={key}
+          gradiant={gradiant || "low"}
+          margin={margin || "low"}
+          key={key}
+        />
       ))}
     </LoadingBlock>
   );
