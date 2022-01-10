@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-interface LoadingProps {}
-function Loading2({}: LoadingProps) {
+interface LoadingProps {
+  maxNum?: number;
+}
+function Loading2({ maxNum }: LoadingProps) {
   return (
     <LoadingBlock>
-      {[...Array(7)].map((_, key) => (
+      {[...Array(maxNum || 7)].map((_, key) => (
         <LoadingItemBlock type={key} key={key} />
       ))}
     </LoadingBlock>

@@ -1,23 +1,53 @@
 import styled from "styled-components";
 
-interface LoadingProps {}
-function Loading4({}: LoadingProps) {
+interface LoadingProps {
+  size?: "s" | "m" | "l";
+  duration?: number;
+}
+function Loading4({ size, duration }: LoadingProps) {
   return (
     <LoadingBlock>
-      <LoadingItemBlock />
+      <LoadingItemBlock size={size || "l"} duration={duration || 1} />
     </LoadingBlock>
   );
 }
 
-const LoadingItemBlock = styled.div`
-  width: 64px;
-  height: 64px;
+interface LoadingItemBlockProps {
+  size: "s" | "m" | "l";
+  duration: number;
+}
+
+const LoadingItemBlock = styled.div<LoadingItemBlockProps>`
+  width: ${props => {
+    switch (props.size) {
+      case "s":
+        return "32px";
+      case "m":
+        return "48px";
+      case "l":
+        return "64px";
+      default:
+        return "64px";
+    }
+  }};
+  height: ${props => {
+    switch (props.size) {
+      case "s":
+        return "32px";
+      case "m":
+        return "48px";
+      case "l":
+        return "64px";
+      default:
+        return "64px";
+    }
+  }};
 
   border: 4px solid #e9e9e9;
   border-top: 4px solid #1483fe;
   border-radius: 50%;
 
-  animation: 1s linear infinite animateSpin;
+  animation: ${props => props.duration + "s linear infinite animateSpin"};
 
   @keyframes animateSpin {
     0% {

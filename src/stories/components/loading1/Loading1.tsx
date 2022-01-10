@@ -29,6 +29,7 @@ interface LoadingItemBlockProps {
 const LoadingItemBlock = styled.div<LoadingItemBlockProps>`
   width: 16px;
   height: 80px;
+
   margin: ${props =>
     "0 " +
     (props.margin === "high" ? 16 : props.margin === "middle" ? 8 : 4) +
@@ -51,7 +52,7 @@ const LoadingItemBlock = styled.div<LoadingItemBlockProps>`
       transform: translateY(0);
     }
     100% {
-      transform: translateY(-75%);
+      transform: translateY(-70%);
     }
   }
 `;

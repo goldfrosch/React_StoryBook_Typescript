@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-interface LoadingProps {}
-function Loading3({}: LoadingProps) {
+interface LoadingProps {
+  length?: number;
+}
+function Loading3({ length }: LoadingProps) {
   return (
     <LoadingBlock>
-      {[...Array(5)].map((_, key) => (
+      {[...Array(length || 5)].map((_, key) => (
         <LoadingBlock key={key}>
           <LoadingItemBlockLeft></LoadingItemBlockLeft>
           <LoadingItemBlockRight></LoadingItemBlockRight>
